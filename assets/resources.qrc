@@ -1,0 +1,21 @@
+<RCC>
+  <qresource>
+    <file>icons/calender.png</file>
+    <file>icons/refresh.png</file>
+    <file>icons/delete2.png</file>
+    <file>icons/edit2.png</file>
+    <file>icons/edit.png</file>
+    <file>icons/delete.png</file>
+    <file>icons/dashboard.png</file>
+    <file>icons/dashboard_white.png</file>
+    <file>icons/image (1).png</file>
+    <file>icons/log_out.png</file>
+    <file>icons/log_out_white.png</file>
+    <file>icons/menu.png</file>
+    <file>icons/messages.png</file>
+    <file>icons/messages_white.png</file>
+    <file>icons/profile.png</file>
+    <file>icons/profile_white.png</file>
+    <file>icons/search.png</file>
+  </qresource>
+</RCC>

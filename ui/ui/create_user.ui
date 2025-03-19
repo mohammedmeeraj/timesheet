@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>348</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget" native="true">
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+color: #666;
+font-size: 14px;
+padding: 4px;
+border: 1px solid #ccc;
+border-radius: 2px;
+background-color: #f9f9f9;
+}
+QLineEdit:focus {
+            border: 1px solid #0078d4;
+            background-color: #fff;
+        }
+
+QComboBox{
+border:1px solid #ccc;
+padding:4px;
+border-radius: 2px;
+
+
+}
+QComboBox:focus{
+
+ border: 1px solid #0078d4;
+            background-color: #fff;
+
+}</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Create User</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLineEdit" name="username_le">
+          <property name="placeholderText">
+           <string>Enter username</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="employee_id_le">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Employee Id</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="create_pass_le">
+          <property name="placeholderText">
+           <string>Create Password</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="repeat_pass_le">
+          <property name="placeholderText">
+           <string>Repeat Password</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="email_le">
+          <property name="placeholderText">
+           <string>User email</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="reporting_to_combo">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="role_combo">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_create_user">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border:none;
+border-radius:4px;
+padding:7px;
+padding-left-10px;
+padding-right:10px;
+background-color: rgb(31, 149, 239);
+color:white;
+
+
+
+
+
+}
+QPushButton:hover{
+background-color:#1668a7;
+
+
+
+
+
+
+}</string>
+          </property>
+          <property name="text">
+           <string>Create User</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

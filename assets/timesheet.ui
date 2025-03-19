@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>996</width>
+    <height>489</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget" native="true">
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border:none;
+border-radius:4px;
+background-color:#cc0000;
+color:white;
+padding-right:28px;
+padding-left:28px;
+padding-top:8px;
+padding-bottom:8px;
+
+
+}
+
+border-color: rgb(0, 0, 0);
+border-right-color: rgb(255, 0, 0);</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Employee</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="employee_le">
+          <property name="text">
+           <string>Employee</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>708</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Week</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="week_le">
+          <property name="text">
+           <string>Week</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>708</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="timehseet_table">
+        <property name="frameShadow">
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="verticalScrollMode">
+         <enum>QAbstractItemView::ScrollPerPixel</enum>
+        </property>
+        <property name="horizontalScrollMode">
+         <enum>QAbstractItemView::ScrollPerItem</enum>
+        </property>
+        <property name="showGrid">
+         <bool>false</bool>
+        </property>
+        <property name="sortingEnabled">
+         <bool>true</bool>
+        </property>
+        <property name="rowCount">
+         <number>0</number>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderMinimumSectionSize">
+         <number>32</number>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>Project</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Segment</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Subtask</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dec 01-Mon</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dec 02-Tue</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dec 03-Wed</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dec 04-Thu</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dec 05-Fri</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dec 06-Sat</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dec 07-Sun</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="total_time_widget" native="true">
+        <property name="styleSheet">
+         <string notr="true">QWidget{
+background-color: #ffffff;
+border: 1px solid #e0e0e0;
+border-radius: 10px;
+}
+QLabel {
+                background-color: none; /* Ensure labels remain unaffected */
+                border: none;
+                color: #333333;
+                font-weight: normal;
+            }
+</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Total Hours:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="day1">
+             <property name="text">
+              <string>Dec 01:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="day1_value">
+             <property name="text">
+              <string>8</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QLabel" name="day2">
+             <property name="text">
+              <string>Dec 02:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="day2_value">
+             <property name="text">
+              <string>8</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QLabel" name="day3">
+             <property name="text">
+              <string>Dec 03:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="day3_value">
+             <property name="text">
+              <string>4</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="day4">
+             <property name="text">
+              <string>Dec 04:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="day4_value">
+             <property name="text">
+              <string>4</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QLabel" name="day5">
+             <property name="text">
+              <string>Dec 05:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="day5_value">
+             <property name="text">
+              <string>4</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <item>
+            <widget class="QLabel" name="day6">
+             <property name="text">
+              <string>Dec 06:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="day6_value">
+             <property name="text">
+              <string>4</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="QLabel" name="day7">
+             <property name="text">
+              <string>Dec 07:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="day7_value">
+             <property name="text">
+              <string>4</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="total_time">
+           <property name="text">
+            <string>49.00</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

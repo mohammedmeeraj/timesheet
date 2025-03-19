@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file>assets/icons/messages_white.png</file>
+    <file>assets/icons/messages.png</file>
+  </qresource>
+</RCC>
