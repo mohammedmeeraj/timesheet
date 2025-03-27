@@ -1,8 +1,8 @@
-from PyQt6.QtWidgets import QApplication,QMainWindow,QPushButton,QDialog,QMessageBox
-import os,mysql.connector,sys
+from PyQt6.QtWidgets import QApplication,QMainWindow,QPushButton,QDialog,QMessageBox,QSplashScreen
+import os,mysql.connector,sys,time
 
 from PyQt6.QtCore import Qt,QSettings
-from PyQt6.QtGui import QFontDatabase,QFont
+from PyQt6.QtGui import QFontDatabase,QFont,QPixmap
 from ui_views.employee import MyEmployee
 from ui_views.admin import MyAdmin
 from db.db_pool import DatabasePool
@@ -84,6 +84,9 @@ stylesheet=load_stylesheet(stylesheet_path)
 app.setStyleSheet(stylesheet)
 # load_fonts(app=app)
 # if not check_auto_login():
+# splash=QSplashScreen(QPixmap("assets/icons/schuecologo.png"))
+# splash.show()
+# time.sleep(4)
 login_dialog=Login()
 if not login_dialog.auto_login:
     result=login_dialog.exec()

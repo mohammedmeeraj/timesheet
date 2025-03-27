@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import os,sys
+import sys,os
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -48,9 +48,7 @@ class Ui_MainWindow(object):
         self.label.setMaximumSize(QtCore.QSize(40, 40))
         self.label.setText("")
         # self.label.setPixmap(QtGui.QPixmap(":/icons/image (1).png"))
-        # self.label.setPixmap(QtGui.QPixmap(self.resource_path("assets/icons/iamge (1).png")))
         self.label.setPixmap(QtGui.QPixmap(self.resource_path("assets/icons/image (1).png")))
-
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.horizontalLayout_3.addWidget(self.label)
@@ -68,6 +66,7 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/dashboard_white.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         icon.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/dashboard.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.project_btn_1.setIcon(icon)
+        self.project_btn_1.setIconSize(QtCore.QSize(20, 20))
         self.project_btn_1.setCheckable(True)
         self.project_btn_1.setAutoExclusive(True)
         self.project_btn_1.setObjectName("project_btn_1")
@@ -78,10 +77,10 @@ class Ui_MainWindow(object):
         icon1 = QtGui.QIcon()
         # icon1.addPixmap(QtGui.QPixmap(":/icons/profile_white.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         # icon1.addPixmap(QtGui.QPixmap(":/icons/profile.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        
         icon1.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/profile_white.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         icon1.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/profile.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.assignment_btn_1.setIcon(icon1)
+        self.assignment_btn_1.setIconSize(QtCore.QSize(20, 20))
         self.assignment_btn_1.setCheckable(True)
         self.assignment_btn_1.setAutoExclusive(True)
         self.assignment_btn_1.setObjectName("assignment_btn_1")
@@ -95,22 +94,38 @@ class Ui_MainWindow(object):
         icon2.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/messages_white.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         icon2.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/messages.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.timesheet_btn_1.setIcon(icon2)
+        self.timesheet_btn_1.setIconSize(QtCore.QSize(20, 20))
         self.timesheet_btn_1.setCheckable(True)
         self.timesheet_btn_1.setAutoExclusive(True)
         self.timesheet_btn_1.setObjectName("timesheet_btn_1")
         self.verticalLayout.addWidget(self.timesheet_btn_1)
+        self.regularisation_btn_1 = QtWidgets.QPushButton(parent=self.icon_only_widget)
+        self.regularisation_btn_1.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.regularisation_btn_1.setText("")
+        icon3 = QtGui.QIcon()
+        # icon3.addPixmap(QtGui.QPixmap(":/assets/icons/regularization_white.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        # icon3.addPixmap(QtGui.QPixmap(":/assets/icons/regularization.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon3.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/regularization_white.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon3.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/regularization.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.regularisation_btn_1.setIcon(icon3)
+        self.regularisation_btn_1.setIconSize(QtCore.QSize(20, 20))
+        self.regularisation_btn_1.setCheckable(True)
+        self.regularisation_btn_1.setAutoExclusive(True)
+        self.regularisation_btn_1.setObjectName("regularisation_btn_1")
+        self.verticalLayout.addWidget(self.regularisation_btn_1)
         self.verticalLayout_3.addLayout(self.verticalLayout)
         spacerItem = QtWidgets.QSpacerItem(20, 348, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_3.addItem(spacerItem)
         self.sign_out_btn_1 = QtWidgets.QPushButton(parent=self.icon_only_widget)
         self.sign_out_btn_1.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.sign_out_btn_1.setText("")
-        icon3 = QtGui.QIcon()
-        # icon3.addPixmap(QtGui.QPixmap(":/icons/log_out_white.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        # icon3.addPixmap(QtGui.QPixmap(":/icons/log_out.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        icon3.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/log_out_white.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon3.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/log_out.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
-        self.sign_out_btn_1.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        # icon4.addPixmap(QtGui.QPixmap(":/icons/log_out_white.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        # icon4.addPixmap(QtGui.QPixmap(":/icons/log_out.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        icon4.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/log_out_white.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon4.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/log_out.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
+        self.sign_out_btn_1.setIcon(icon4)
+        self.sign_out_btn_1.setIconSize(QtCore.QSize(20, 20))
         self.sign_out_btn_1.setCheckable(True)
         self.sign_out_btn_1.setAutoExclusive(False)
         self.sign_out_btn_1.setObjectName("sign_out_btn_1")
@@ -172,6 +187,7 @@ class Ui_MainWindow(object):
         self.project_btn_2 = QtWidgets.QPushButton(parent=self.icon_name_widget)
         self.project_btn_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.project_btn_2.setIcon(icon)
+        self.project_btn_2.setIconSize(QtCore.QSize(20, 20))
         self.project_btn_2.setCheckable(True)
         self.project_btn_2.setAutoExclusive(True)
         self.project_btn_2.setObjectName("project_btn_2")
@@ -179,6 +195,7 @@ class Ui_MainWindow(object):
         self.assignment_btn_2 = QtWidgets.QPushButton(parent=self.icon_name_widget)
         self.assignment_btn_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.assignment_btn_2.setIcon(icon1)
+        self.assignment_btn_2.setIconSize(QtCore.QSize(20, 20))
         self.assignment_btn_2.setCheckable(True)
         self.assignment_btn_2.setAutoExclusive(True)
         self.assignment_btn_2.setObjectName("assignment_btn_2")
@@ -186,10 +203,19 @@ class Ui_MainWindow(object):
         self.timesheet_btn_2 = QtWidgets.QPushButton(parent=self.icon_name_widget)
         self.timesheet_btn_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.timesheet_btn_2.setIcon(icon2)
+        self.timesheet_btn_2.setIconSize(QtCore.QSize(20, 20))
         self.timesheet_btn_2.setCheckable(True)
         self.timesheet_btn_2.setAutoExclusive(True)
         self.timesheet_btn_2.setObjectName("timesheet_btn_2")
         self.verticalLayout_2.addWidget(self.timesheet_btn_2)
+        self.regularisation_btn_2 = QtWidgets.QPushButton(parent=self.icon_name_widget)
+        self.regularisation_btn_2.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.regularisation_btn_2.setIcon(icon3)
+        self.regularisation_btn_2.setIconSize(QtCore.QSize(20, 20))
+        self.regularisation_btn_2.setCheckable(True)
+        self.regularisation_btn_2.setAutoExclusive(True)
+        self.regularisation_btn_2.setObjectName("regularisation_btn_2")
+        self.verticalLayout_2.addWidget(self.regularisation_btn_2)
         self.verticalLayout_4.addLayout(self.verticalLayout_2)
         spacerItem1 = QtWidgets.QSpacerItem(20, 348, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_4.addItem(spacerItem1)
@@ -211,10 +237,10 @@ class Ui_MainWindow(object):
         self.menu_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.menu_btn.setStyleSheet("border:none;")
         self.menu_btn.setText("")
-        icon4 = QtGui.QIcon()
-        # icon4.addPixmap(QtGui.QPixmap(":/icons/menu.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon4.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/menu.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.menu_btn.setIcon(icon4)
+        icon5 = QtGui.QIcon()
+        # icon5.addPixmap(QtGui.QPixmap(":/icons/menu.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon5.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/menu.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.menu_btn.setIcon(icon5)
         self.menu_btn.setIconSize(QtCore.QSize(20, 20))
         self.menu_btn.setCheckable(True)
         self.menu_btn.setObjectName("menu_btn")
@@ -229,10 +255,10 @@ class Ui_MainWindow(object):
         self.search_btn = QtWidgets.QPushButton(parent=self.header_widget)
         self.search_btn.setStyleSheet("border:none;")
         self.search_btn.setText("")
-        icon5 = QtGui.QIcon()
-        # icon5.addPixmap(QtGui.QPixmap(":/icons/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon5.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/search.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.search_btn.setIcon(icon5)
+        icon6 = QtGui.QIcon()
+        # icon6.addPixmap(QtGui.QPixmap(":/icons/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon6.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/search.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.search_btn.setIcon(icon6)
         self.search_btn.setIconSize(QtCore.QSize(20, 20))
         self.search_btn.setObjectName("search_btn")
         self.horizontalLayout.addWidget(self.search_btn)
@@ -242,10 +268,11 @@ class Ui_MainWindow(object):
         self.user_btn = QtWidgets.QPushButton(parent=self.header_widget)
         self.user_btn.setStyleSheet("border:none")
         self.user_btn.setText("")
-        icon6 = QtGui.QIcon()
-        # icon6.addPixmap(QtGui.QPixmap(":/icons/image (1).png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon6.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/image (1).png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.user_btn.setIcon(icon6)
+        icon7 = QtGui.QIcon()
+        # icon7.addPixmap(QtGui.QPixmap(":/icons/image (1).png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon7.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/image (1).png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+
+        self.user_btn.setIcon(icon7)
         self.user_btn.setIconSize(QtCore.QSize(20, 20))
         self.user_btn.setObjectName("user_btn")
         self.horizontalLayout_4.addWidget(self.user_btn)
@@ -273,28 +300,31 @@ class Ui_MainWindow(object):
         spacerItem4 = QtWidgets.QSpacerItem(558, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem4)
         self.subtask_edit_btn = QtWidgets.QPushButton(parent=self.project_page_widget)
-        self.subtask_edit_btn.setMinimumSize(QtCore.QSize(20, 20))
-        self.subtask_edit_btn.setMaximumSize(QtCore.QSize(20, 20))
+        self.subtask_edit_btn.setMinimumSize(QtCore.QSize(25, 25))
+        self.subtask_edit_btn.setMaximumSize(QtCore.QSize(25, 25))
         self.subtask_edit_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.subtask_edit_btn.setStyleSheet("border:none;")
         self.subtask_edit_btn.setText("")
-        icon7 = QtGui.QIcon()
-        # icon7.addPixmap(QtGui.QPixmap(":/icons/edit2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon7.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/edit2.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.subtask_edit_btn.setIcon(icon7)
+        icon8 = QtGui.QIcon()
+        # icon8.addPixmap(QtGui.QPixmap(":/icons/edit2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon8.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/edit2.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+
+        self.subtask_edit_btn.setIcon(icon8)
+        self.subtask_edit_btn.setIconSize(QtCore.QSize(20, 20))
         self.subtask_edit_btn.setCheckable(True)
         self.subtask_edit_btn.setObjectName("subtask_edit_btn")
         self.horizontalLayout_5.addWidget(self.subtask_edit_btn)
         self.subtask_delete_btn = QtWidgets.QPushButton(parent=self.project_page_widget)
-        self.subtask_delete_btn.setMinimumSize(QtCore.QSize(20, 20))
-        self.subtask_delete_btn.setMaximumSize(QtCore.QSize(20, 20))
+        self.subtask_delete_btn.setMinimumSize(QtCore.QSize(25, 25))
+        self.subtask_delete_btn.setMaximumSize(QtCore.QSize(25, 25))
         self.subtask_delete_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.subtask_delete_btn.setStyleSheet("border:none")
         self.subtask_delete_btn.setText("")
-        icon8 = QtGui.QIcon()
-        # icon8.addPixmap(QtGui.QPixmap(":/icons/delete2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon8.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/delete2.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.subtask_delete_btn.setIcon(icon8)
+        icon9 = QtGui.QIcon()
+        # icon9.addPixmap(QtGui.QPixmap(":/icons/delete2.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon9.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/delete2.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.subtask_delete_btn.setIcon(icon9)
+        self.subtask_delete_btn.setIconSize(QtCore.QSize(20, 20))
         self.subtask_delete_btn.setCheckable(True)
         self.subtask_delete_btn.setObjectName("subtask_delete_btn")
         self.horizontalLayout_5.addWidget(self.subtask_delete_btn)
@@ -303,10 +333,10 @@ class Ui_MainWindow(object):
         self.add_subtask_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
 "border-radius:4px;\n"
-"padding:6px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #1ABC9C;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -315,7 +345,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#16A085;\n"
 "\n"
 "\n"
 "\n"
@@ -335,7 +365,7 @@ class Ui_MainWindow(object):
         self.subtask_table.setAlternatingRowColors(True)
         self.subtask_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.subtask_table.setTextElideMode(QtCore.Qt.TextElideMode.ElideMiddle)
-        self.subtask_table.setShowGrid(False)
+        self.subtask_table.setShowGrid(True)
         self.subtask_table.setObjectName("subtask_table")
         self.subtask_table.setColumnCount(5)
         self.subtask_table.setRowCount(5)
@@ -370,26 +400,26 @@ class Ui_MainWindow(object):
         spacerItem5 = QtWidgets.QSpacerItem(558, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem5)
         self.project_edit_btn = QtWidgets.QPushButton(parent=self.project_page_widget)
-        self.project_edit_btn.setMinimumSize(QtCore.QSize(20, 20))
-        self.project_edit_btn.setMaximumSize(QtCore.QSize(20, 20))
+        self.project_edit_btn.setMinimumSize(QtCore.QSize(25, 25))
+        self.project_edit_btn.setMaximumSize(QtCore.QSize(25, 25))
         self.project_edit_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.project_edit_btn.setStyleSheet("border:none;\n"
 "")
         self.project_edit_btn.setText("")
-        self.project_edit_btn.setIcon(icon7)
-        self.project_edit_btn.setIconSize(QtCore.QSize(16, 16))
+        self.project_edit_btn.setIcon(icon8)
+        self.project_edit_btn.setIconSize(QtCore.QSize(20, 20))
         self.project_edit_btn.setCheckable(True)
         self.project_edit_btn.setObjectName("project_edit_btn")
         self.horizontalLayout_6.addWidget(self.project_edit_btn)
         self.project_delete_btn = QtWidgets.QPushButton(parent=self.project_page_widget)
         self.project_delete_btn.setMinimumSize(QtCore.QSize(20, 20))
-        self.project_delete_btn.setMaximumSize(QtCore.QSize(16, 40))
+        self.project_delete_btn.setMaximumSize(QtCore.QSize(25, 25))
         self.project_delete_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.project_delete_btn.setStyleSheet("border:none;\n"
 "")
         self.project_delete_btn.setText("")
-        self.project_delete_btn.setIcon(icon8)
-        self.project_delete_btn.setIconSize(QtCore.QSize(16, 16))
+        self.project_delete_btn.setIcon(icon9)
+        self.project_delete_btn.setIconSize(QtCore.QSize(20, 20))
         self.project_delete_btn.setCheckable(True)
         self.project_delete_btn.setObjectName("project_delete_btn")
         self.horizontalLayout_6.addWidget(self.project_delete_btn)
@@ -397,11 +427,11 @@ class Ui_MainWindow(object):
         self.new_project_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.new_project_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #1ABC9C;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -410,7 +440,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#16A085;\n"
 "\n"
 "\n"
 "\n"
@@ -440,7 +470,7 @@ class Ui_MainWindow(object):
         self.project_table.setTextElideMode(QtCore.Qt.TextElideMode.ElideLeft)
         self.project_table.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollMode.ScrollPerPixel)
         self.project_table.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollMode.ScrollPerPixel)
-        self.project_table.setShowGrid(False)
+        self.project_table.setShowGrid(True)
         self.project_table.setObjectName("project_table")
         self.project_table.setColumnCount(4)
         self.project_table.setRowCount(5)
@@ -487,35 +517,36 @@ class Ui_MainWindow(object):
         spacerItem6 = QtWidgets.QSpacerItem(628, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem6)
         self.edit_assign_btn = QtWidgets.QPushButton(parent=self.assignment_page_widget)
-        self.edit_assign_btn.setMinimumSize(QtCore.QSize(20, 20))
-        self.edit_assign_btn.setMaximumSize(QtCore.QSize(20, 20))
+        self.edit_assign_btn.setMinimumSize(QtCore.QSize(25, 25))
+        self.edit_assign_btn.setMaximumSize(QtCore.QSize(25, 25))
         self.edit_assign_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.edit_assign_btn.setStyleSheet("border:none;")
         self.edit_assign_btn.setText("")
-        self.edit_assign_btn.setIcon(icon7)
-        self.edit_assign_btn.setIconSize(QtCore.QSize(16, 16))
+        self.edit_assign_btn.setIcon(icon8)
+        self.edit_assign_btn.setIconSize(QtCore.QSize(20, 20))
         self.edit_assign_btn.setCheckable(True)
         self.edit_assign_btn.setObjectName("edit_assign_btn")
         self.horizontalLayout_7.addWidget(self.edit_assign_btn)
         self.delete_assign_btn = QtWidgets.QPushButton(parent=self.assignment_page_widget)
-        self.delete_assign_btn.setMinimumSize(QtCore.QSize(20, 20))
-        self.delete_assign_btn.setMaximumSize(QtCore.QSize(20, 20))
+        self.delete_assign_btn.setMinimumSize(QtCore.QSize(25, 25))
+        self.delete_assign_btn.setMaximumSize(QtCore.QSize(25, 25))
         self.delete_assign_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.delete_assign_btn.setStyleSheet("border:none;")
         self.delete_assign_btn.setText("")
-        self.delete_assign_btn.setIcon(icon8)
-        self.delete_assign_btn.setIconSize(QtCore.QSize(16, 16))
+        self.delete_assign_btn.setIcon(icon9)
+        self.delete_assign_btn.setIconSize(QtCore.QSize(20, 20))
         self.delete_assign_btn.setCheckable(True)
         self.delete_assign_btn.setObjectName("delete_assign_btn")
         self.horizontalLayout_7.addWidget(self.delete_assign_btn)
         self.reset_user_password_btn = QtWidgets.QPushButton(parent=self.assignment_page_widget)
+        self.reset_user_password_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.reset_user_password_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color:#FF6B6B;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -524,7 +555,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#E74C3C;\n"
 "\n"
 "\n"
 "\n"
@@ -538,11 +569,12 @@ class Ui_MainWindow(object):
         self.create_user_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.create_user_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #1ABC9C;\n"
+"\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -551,7 +583,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#16A085;\n"
 "\n"
 "\n"
 "\n"
@@ -562,13 +594,14 @@ class Ui_MainWindow(object):
         self.create_user_btn.setObjectName("create_user_btn")
         self.horizontalLayout_7.addWidget(self.create_user_btn)
         self.logged_in_btn = QtWidgets.QPushButton(parent=self.assignment_page_widget)
+        self.logged_in_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.logged_in_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #F39C12;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -577,7 +610,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#D68910;\n"
 "\n"
 "\n"
 "\n"
@@ -591,11 +624,11 @@ class Ui_MainWindow(object):
         self.assign_project_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.assign_project_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color:#2980B9;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -604,7 +637,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#1F6690;\n"
 "\n"
 "\n"
 "\n"
@@ -628,7 +661,7 @@ class Ui_MainWindow(object):
         self.assignment_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.assignment_table.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollMode.ScrollPerPixel)
         self.assignment_table.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollMode.ScrollPerPixel)
-        self.assignment_table.setShowGrid(False)
+        self.assignment_table.setShowGrid(True)
         self.assignment_table.setGridStyle(QtCore.Qt.PenStyle.SolidLine)
         self.assignment_table.setObjectName("assignment_table")
         self.assignment_table.setColumnCount(8)
@@ -700,15 +733,16 @@ class Ui_MainWindow(object):
         self.week_combo.setObjectName("week_combo")
         self.horizontalLayout_8.addWidget(self.week_combo)
         self.refresh_btn = QtWidgets.QPushButton(parent=self.timesheet_page_widget)
-        self.refresh_btn.setMinimumSize(QtCore.QSize(20, 20))
-        self.refresh_btn.setMaximumSize(QtCore.QSize(20, 20))
+        self.refresh_btn.setMinimumSize(QtCore.QSize(25, 25))
+        self.refresh_btn.setMaximumSize(QtCore.QSize(25, 25))
         self.refresh_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.refresh_btn.setStyleSheet("border:none")
         self.refresh_btn.setText("")
-        icon9 = QtGui.QIcon()
-        # icon9.addPixmap(QtGui.QPixmap(":/icons/refresh.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        icon9.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/refresh.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.refresh_btn.setIcon(icon9)
+        icon10 = QtGui.QIcon()
+        # icon10.addPixmap(QtGui.QPixmap(":/icons/refresh.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon10.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/refresh.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.refresh_btn.setIcon(icon10)
+        self.refresh_btn.setIconSize(QtCore.QSize(20, 20))
         self.refresh_btn.setObjectName("refresh_btn")
         self.horizontalLayout_8.addWidget(self.refresh_btn)
         spacerItem7 = QtWidgets.QSpacerItem(368, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -717,11 +751,11 @@ class Ui_MainWindow(object):
         self.extract_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.extract_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left:14px;\n"
 "padding-right:14px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #F39C12;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -730,7 +764,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#D68910;\n"
 "\n"
 "\n"
 "\n"
@@ -747,7 +781,7 @@ class Ui_MainWindow(object):
         self.timesheet_table.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.timesheet_table.setAlternatingRowColors(True)
         self.timesheet_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
-        self.timesheet_table.setShowGrid(False)
+        self.timesheet_table.setShowGrid(True)
         self.timesheet_table.setObjectName("timesheet_table")
         self.timesheet_table.setColumnCount(8)
         self.timesheet_table.setRowCount(8)
@@ -787,12 +821,115 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addWidget(self.timesheet_table, 1, 0, 1, 1)
         self.gridLayout_5.addWidget(self.timesheet_page_widget, 0, 0, 1, 1)
         self.stackedWidget.addWidget(self.Timesheet_page)
+        self.regularisation_page = QtWidgets.QWidget()
+        self.regularisation_page.setObjectName("regularisation_page")
+        self.gridLayout_7 = QtWidgets.QGridLayout(self.regularisation_page)
+        self.gridLayout_7.setObjectName("gridLayout_7")
+        self.regularisation_page_widget = QtWidgets.QWidget(parent=self.regularisation_page)
+        self.regularisation_page_widget.setObjectName("regularisation_page_widget")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.regularisation_page_widget)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        spacerItem8 = QtWidgets.QSpacerItem(818, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem8)
+        self.refresh_reg_btn = QtWidgets.QPushButton(parent=self.regularisation_page_widget)
+        self.refresh_reg_btn.setMinimumSize(QtCore.QSize(25, 25))
+        self.refresh_reg_btn.setMaximumSize(QtCore.QSize(25, 25))
+        self.refresh_reg_btn.setStyleSheet("border:none;")
+        self.refresh_reg_btn.setText("")
+        self.refresh_reg_btn.setIcon(icon10)
+        self.refresh_reg_btn.setObjectName("refresh_reg_btn")
+        self.horizontalLayout_10.addWidget(self.refresh_reg_btn)
+        self.horizontalLayout_10.setStretch(0, 1)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_10)
+        self.regularisation_table = QtWidgets.QTableWidget(parent=self.regularisation_page_widget)
+        self.regularisation_table.setAlternatingRowColors(True)
+        self.regularisation_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
+
+        self.regularisation_table.setObjectName("regularisation_table")
+        self.regularisation_table.setColumnCount(3)
+        self.regularisation_table.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.regularisation_table.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.regularisation_table.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.regularisation_table.setHorizontalHeaderItem(2, item)
+        self.regularisation_table.horizontalHeader().setStretchLastSection(True)
+        self.regularisation_table.verticalHeader().setStretchLastSection(False)
+        self.verticalLayout_10.addWidget(self.regularisation_table)
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        spacerItem9 = QtWidgets.QSpacerItem(648, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem9)
+        self.accept_btn = QtWidgets.QPushButton(parent=self.regularisation_page_widget)
+        self.accept_btn.setMinimumSize(QtCore.QSize(80, 0))
+        self.accept_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.accept_btn.setStyleSheet("QPushButton{\n"
+"border:none;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
+"padding-left-10px;\n"
+"padding-right:10px;\n"
+"background-color: #1ABC9C;\n"
+"\n"
+"color:white;\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#16A085;\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"}")
+        self.accept_btn.setObjectName("accept_btn")
+        self.horizontalLayout_11.addWidget(self.accept_btn)
+        self.accept_all_btn = QtWidgets.QPushButton(parent=self.regularisation_page_widget)
+        self.accept_all_btn.setMinimumSize(QtCore.QSize(80, 0))
+        self.accept_all_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.accept_all_btn.setStyleSheet("QPushButton{\n"
+"border:none;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
+"padding-left-10px;\n"
+"padding-right:10px;\n"
+"background-color: #F39C12;\n"
+"color:white;\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color:#D68910;\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"}")
+        self.accept_all_btn.setObjectName("accept_all_btn")
+        self.horizontalLayout_11.addWidget(self.accept_all_btn)
+        self.horizontalLayout_11.setStretch(0, 1)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_11)
+        self.gridLayout_7.addWidget(self.regularisation_page_widget, 0, 0, 1, 1)
+        self.stackedWidget.addWidget(self.regularisation_page)
         self.verticalLayout_5.addWidget(self.stackedWidget)
         self.gridLayout.addWidget(self.main_menu, 0, 2, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.project_btn_2.toggled['bool'].connect(self.project_btn_1.setChecked) # type: ignore
         self.assignment_btn_2.toggled['bool'].connect(self.assignment_btn_1.setChecked) # type: ignore
         self.timesheet_btn_1.toggled['bool'].connect(self.timesheet_btn_2.setChecked) # type: ignore
@@ -801,6 +938,8 @@ class Ui_MainWindow(object):
         self.assignment_btn_1.toggled['bool'].connect(self.assignment_btn_2.setChecked) # type: ignore
         self.menu_btn.toggled['bool'].connect(self.icon_only_widget.setHidden) # type: ignore
         self.menu_btn.toggled['bool'].connect(self.icon_name_widget.setVisible) # type: ignore
+        self.regularisation_btn_2.toggled['bool'].connect(self.regularisation_btn_1.setChecked) # type: ignore
+        self.regularisation_btn_1.toggled['bool'].connect(self.regularisation_btn_2.setChecked) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 
@@ -825,6 +964,7 @@ class Ui_MainWindow(object):
         self.project_btn_2.setText(_translate("MainWindow", "Project"))
         self.assignment_btn_2.setText(_translate("MainWindow", "Assignment"))
         self.timesheet_btn_2.setText(_translate("MainWindow", "TimeSheet"))
+        self.regularisation_btn_2.setText(_translate("MainWindow", "Regularisation"))
         self.sign_out_btn_2.setText(_translate("MainWindow", "Sign out"))
         self.add_subtask_btn.setText(_translate("MainWindow", "Add Subtask"))
         self.subtask_table.setSortingEnabled(True)
@@ -937,3 +1077,11 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Subtask"))
         item = self.timesheet_table.horizontalHeaderItem(7)
         item.setText(_translate("MainWindow", "Logged Hours"))
+        item = self.regularisation_table.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Employee Name"))
+        item = self.regularisation_table.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "Regularisation for"))
+        item = self.regularisation_table.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Reason"))
+        self.accept_btn.setText(_translate("MainWindow", "Accept"))
+        self.accept_all_btn.setText(_translate("MainWindow", "Accept All"))

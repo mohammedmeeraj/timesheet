@@ -122,11 +122,11 @@ padding:12px;
              <property name="styleSheet">
               <string notr="true">QPushButton{
 border:none;
-border-radius:4px;
-padding:6px;
+border-radius:3px;
+padding:8px;
 padding-left-10px;
 padding-right:10px;
-background-color: rgb(31, 149, 239);
+background-color: #F39C12;
 color:white;
 
 
@@ -135,7 +135,7 @@ color:white;
 
 }
 QPushButton:hover{
-background-color:#1668a7;
+background-color:#D68910;
 
 
 
@@ -229,6 +229,11 @@ background-color:#1668a7;
            <column>
             <property name="text">
              <string>Hours</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Regularised</string>
             </property>
            </column>
           </widget>

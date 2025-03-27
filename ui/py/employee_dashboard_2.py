@@ -209,7 +209,6 @@ class Ui_MainWindow(object):
         self.search_btn.setText("")
         icon4 = QtGui.QIcon()
         # icon4.addPixmap(QtGui.QPixmap(":/icons/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        
         icon4.addPixmap(QtGui.QPixmap(self.resource_path("icons/search.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.search_btn.setIcon(icon4)
         self.search_btn.setCheckable(True)
@@ -288,14 +287,15 @@ class Ui_MainWindow(object):
         spacerItem4 = QtWidgets.QSpacerItem(338, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem4)
         self.btn_sign_in_sign_out = QtWidgets.QPushButton(parent=self.timesheet_widget)
+        self.btn_sign_in_sign_out.setMinimumSize(QtCore.QSize(80, 0))
         self.btn_sign_in_sign_out.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.btn_sign_in_sign_out.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color:#FF6B6B;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -304,7 +304,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#E74C3C;\n"
 "\n"
 "\n"
 "\n"
@@ -315,14 +315,15 @@ class Ui_MainWindow(object):
         self.btn_sign_in_sign_out.setObjectName("btn_sign_in_sign_out")
         self.horizontalLayout_5.addWidget(self.btn_sign_in_sign_out)
         self.logs_btn = QtWidgets.QPushButton(parent=self.timesheet_widget)
+        self.logs_btn.setMinimumSize(QtCore.QSize(80, 0))
         self.logs_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.logs_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #F39C12;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -331,7 +332,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#D68910;\n"
 "\n"
 "\n"
 "\n"
@@ -371,7 +372,6 @@ class Ui_MainWindow(object):
         icon6 = QtGui.QIcon()
         # icon6.addPixmap(QtGui.QPixmap(":/icons/refresh.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         icon6.addPixmap(QtGui.QPixmap(self.resource_path("assets/icons/refresh.png")), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-
         self.btn_refresh.setIcon(icon6)
         self.btn_refresh.setObjectName("btn_refresh")
         self.horizontalLayout_6.addWidget(self.btn_refresh)
@@ -514,14 +514,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
         self.btn_add_project = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents)
+        self.btn_add_project.setMinimumSize(QtCore.QSize(80, 0))
         self.btn_add_project.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.btn_add_project.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color:#2980B9;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -530,7 +531,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#1F6690;\n"
 "\n"
 "\n"
 "\n"
@@ -542,14 +543,16 @@ class Ui_MainWindow(object):
         self.btn_add_project.setObjectName("btn_add_project")
         self.horizontalLayout_15.addWidget(self.btn_add_project)
         self.btn_save_calc = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents)
+        self.btn_save_calc.setMinimumSize(QtCore.QSize(120, 0))
         self.btn_save_calc.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.btn_save_calc.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #1ABC9C;\n"
+"\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -558,7 +561,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#16A085;\n"
 "\n"
 "\n"
 "\n"
@@ -570,14 +573,15 @@ class Ui_MainWindow(object):
         self.btn_save_calc.setObjectName("btn_save_calc")
         self.horizontalLayout_15.addWidget(self.btn_save_calc)
         self.export_btn = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents)
+        self.export_btn.setMinimumSize(QtCore.QSize(80, 0))
         self.export_btn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.export_btn.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #F39C12;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -586,7 +590,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#D68910;\n"
 "\n"
 "\n"
 "\n"
@@ -611,30 +615,127 @@ class Ui_MainWindow(object):
         self.gridLayout_4 = QtWidgets.QGridLayout(self.regularization_page)
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.widget = QtWidgets.QWidget(parent=self.regularization_page)
-        self.widget.setStyleSheet("")
+        self.widget.setStyleSheet("QComboBox{\n"
+"border:1px solid #ccc;\n"
+"padding:4px;\n"
+"border-radius: 2px;\n"
+"\n"
+"\n"
+"}\n"
+"QComboBox:focus{\n"
+"\n"
+" border: 1px solid #0078d4;\n"
+"            background-color: #fff;\n"
+"\n"
+"}\n"
+"QTextEdit{\n"
+"border:1px solid #ccc;\n"
+"padding:4px;\n"
+"border-radius:2px;\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QTextEdit:focus{\n"
+"border:1px solid #0078d4;\n"
+"background-color:#fff\n"
+"\n"
+"\n"
+"}")
         self.widget.setObjectName("widget")
-        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.widget)
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.widget)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.horizontalLayout_22 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_22.setObjectName("horizontalLayout_22")
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_22.addItem(spacerItem7)
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        spacerItem8 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem8)
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout()
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.calendarWidget = QtWidgets.QCalendarWidget(parent=self.widget)
-        self.calendarWidget.setStyleSheet("")
-        self.calendarWidget.setObjectName("calendarWidget")
-        self.verticalLayout_6.addWidget(self.calendarWidget)
+        self.horizontalLayout_21 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
         self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_16.setObjectName("horizontalLayout_16")
-        spacerItem7 = QtWidgets.QSpacerItem(798, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_16.addItem(spacerItem7)
-        self.pushButton = QtWidgets.QPushButton(parent=self.widget)
-        self.pushButton.setMinimumSize(QtCore.QSize(101, 35))
+        self.label_7 = QtWidgets.QLabel(parent=self.widget)
+        self.label_7.setMinimumSize(QtCore.QSize(62, 0))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.horizontalLayout_16.addWidget(self.label_7)
+        self.dates_combo = QtWidgets.QComboBox(parent=self.widget)
+        self.dates_combo.setObjectName("dates_combo")
+        self.horizontalLayout_16.addWidget(self.dates_combo)
+        self.horizontalLayout_16.setStretch(1, 1)
+        self.horizontalLayout_21.addLayout(self.horizontalLayout_16)
+        self.horizontalLayout_19 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_19.setObjectName("horizontalLayout_19")
+        self.label_9 = QtWidgets.QLabel(parent=self.widget)
+        self.label_9.setMinimumSize(QtCore.QSize(62, 0))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_19.addWidget(self.label_9)
+        self.open_request_combo = QtWidgets.QComboBox(parent=self.widget)
+        self.open_request_combo.setObjectName("open_request_combo")
+        self.horizontalLayout_19.addWidget(self.open_request_combo)
+        self.horizontalLayout_19.setStretch(1, 1)
+        self.horizontalLayout_21.addLayout(self.horizontalLayout_19)
+        self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
+        self.label_10 = QtWidgets.QLabel(parent=self.widget)
+        self.label_10.setMinimumSize(QtCore.QSize(62, 0))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_10.setFont(font)
+        self.label_10.setObjectName("label_10")
+        self.horizontalLayout_20.addWidget(self.label_10)
+        self.closed_request_combo = QtWidgets.QComboBox(parent=self.widget)
+        self.closed_request_combo.setObjectName("closed_request_combo")
+        self.horizontalLayout_20.addWidget(self.closed_request_combo)
+        self.horizontalLayout_20.setStretch(1, 1)
+        self.horizontalLayout_21.addLayout(self.horizontalLayout_20)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_21)
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        self.label_8 = QtWidgets.QLabel(parent=self.widget)
+        self.label_8.setMinimumSize(QtCore.QSize(62, 0))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label_8")
+        self.horizontalLayout_17.addWidget(self.label_8, 0, QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.reason_txt_edit = QtWidgets.QTextEdit(parent=self.widget)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.reason_txt_edit.setFont(font)
+        self.reason_txt_edit.setObjectName("reason_txt_edit")
+        self.horizontalLayout_17.addWidget(self.reason_txt_edit)
+        self.horizontalLayout_17.setStretch(1, 1)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_17)
+        self.horizontalLayout_18 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
+        spacerItem9 = QtWidgets.QSpacerItem(188, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_18.addItem(spacerItem9)
+        self.btn_regularise = QtWidgets.QPushButton(parent=self.widget)
+        self.btn_regularise.setMinimumSize(QtCore.QSize(101, 35))
         font = QtGui.QFont()
         font.setPointSize(11)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton{\n"
+        self.btn_regularise.setFont(font)
+        self.btn_regularise.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.btn_regularise.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #1ABC9C;\n"
+"\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -643,7 +744,7 @@ class Ui_MainWindow(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#16A085;\n"
 "\n"
 "\n"
 "\n"
@@ -651,9 +752,23 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "}")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_16.addWidget(self.pushButton)
-        self.verticalLayout_6.addLayout(self.horizontalLayout_16)
+        self.btn_regularise.setObjectName("btn_regularise")
+        self.horizontalLayout_18.addWidget(self.btn_regularise)
+        spacerItem10 = QtWidgets.QSpacerItem(188, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_18.addItem(spacerItem10)
+        self.horizontalLayout_18.setStretch(0, 1)
+        self.horizontalLayout_18.setStretch(1, 1)
+        self.horizontalLayout_18.setStretch(2, 1)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_18)
+        self.verticalLayout_7.addLayout(self.verticalLayout_6)
+        spacerItem11 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem11)
+        self.verticalLayout_7.setStretch(1, 1)
+        self.horizontalLayout_22.addLayout(self.verticalLayout_7)
+        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_22.addItem(spacerItem12)
+        self.horizontalLayout_22.setStretch(1, 1)
+        self.gridLayout_5.addLayout(self.horizontalLayout_22, 0, 0, 1, 1)
         self.gridLayout_4.addWidget(self.widget, 0, 1, 1, 1)
         self.stackedWidget.addWidget(self.regularization_page)
         self.verticalLayout_3.addWidget(self.stackedWidget)
@@ -669,7 +784,6 @@ class Ui_MainWindow(object):
         self.regularization_btn_2.toggled['bool'].connect(self.regularization_btn_1.setChecked) # type: ignore
         self.regularization_btn_1.toggled['bool'].connect(self.regularization_btn_2.setChecked) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
 
     def resource_path(self,relative_path):
         if getattr(sys, '_MEIPASS', False):
@@ -737,4 +851,9 @@ class Ui_MainWindow(object):
         self.btn_add_project.setText(_translate("MainWindow", "Add Project"))
         self.btn_save_calc.setText(_translate("MainWindow", "Save and Calculate"))
         self.export_btn.setText(_translate("MainWindow", "Export"))
-        self.pushButton.setText(_translate("MainWindow", "Regularize"))
+        self.label_7.setText(_translate("MainWindow", "Dates"))
+        self.label_9.setText(_translate("MainWindow", "Open Requests"))
+        self.label_10.setText(_translate("MainWindow", "Closed Requests"))
+        self.label_8.setText(_translate("MainWindow", "Reason "))
+        self.reason_txt_edit.setPlaceholderText(_translate("MainWindow", "Enter your reason here..."))
+        self.btn_regularise.setText(_translate("MainWindow", "Regularize"))

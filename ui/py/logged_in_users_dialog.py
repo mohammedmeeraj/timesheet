@@ -58,11 +58,11 @@ class Ui_Dialog(object):
         self.btn_extract_logs = QtWidgets.QPushButton(parent=self.body_widget)
         self.btn_extract_logs.setStyleSheet("QPushButton{\n"
 "border:none;\n"
-"border-radius:4px;\n"
-"padding:6px;\n"
+"border-radius:3px;\n"
+"padding:10px;\n"
 "padding-left-10px;\n"
 "padding-right:10px;\n"
-"background-color: rgb(31, 149, 239);\n"
+"background-color: #F39C12;\n"
 "color:white;\n"
 "\n"
 "\n"
@@ -71,7 +71,7 @@ class Ui_Dialog(object):
 "\n"
 "}\n"
 "QPushButton:hover{\n"
-"background-color:#1668a7;\n"
+"background-color:#D68910;\n"
 "\n"
 "\n"
 "\n"
@@ -101,7 +101,7 @@ class Ui_Dialog(object):
         self.tableWidget.setAlternatingRowColors(True)
         self.tableWidget.setShowGrid(True)
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(8)
+        self.tableWidget.setColumnCount(9)
         self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
@@ -119,6 +119,8 @@ class Ui_Dialog(object):
         self.tableWidget.setHorizontalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(8, item)
         self.tableWidget.verticalHeader().setVisible(True)
         self.verticalLayout.addWidget(self.tableWidget)
         self.verticalLayout_2.addWidget(self.body_widget)
@@ -126,6 +128,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
 
     def resource_path(self,relative_path):
         if getattr(sys, '_MEIPASS', False):
@@ -141,7 +144,8 @@ class Ui_Dialog(object):
         full_path = os.path.join(base_path, relative_path)
         # print(f"Resolved path for {relative_path}: {full_path}")
         return full_path
-    
+
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
@@ -163,3 +167,5 @@ class Ui_Dialog(object):
         item.setText(_translate("Dialog", "Day"))
         item = self.tableWidget.horizontalHeaderItem(7)
         item.setText(_translate("Dialog", "Hours"))
+        item = self.tableWidget.horizontalHeaderItem(8)
+        item.setText(_translate("Dialog", "Regularised"))

@@ -91,6 +91,9 @@ QCalendarWidget QToolButton {
         self.ui.btn_calender_2.clicked.connect(lambda:(self.show_calender(self.ui.end_le,self.calender_widget_2)))
 
 
+    
+
+    
     def extract_logs_to_excel(self):
         start_date=self.ui.start_le.text()
         end_date=self.ui.end_le.text()
@@ -183,6 +186,7 @@ def load_stylesheet(file_path):
     except Exception as e:
         print(f"Error loading stylesheet: {e}")
         return ""
+    
 if __name__=="__main__":
     app=QApplication(sys.argv)
     stylesheet=load_stylesheet("c:/project management tool/assets/styles.qss")

@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="/">
+    <file>assets/icons/Schueco_Logo_RGB_Black.png</file>
+    <file>assets/icons/schiebetueren4-image-data.jpg</file>
+    <file>assets/icons/regularization_white.png</file>
+    <file>assets/icons/regularization.png</file>
+    <file>assets/icons/schiebetueren1-image-data.jpg</file>
     <file>assets/icons/messages_white.png</file>
     <file>assets/icons/messages.png</file>
   </qresource>

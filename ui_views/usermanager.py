@@ -12,7 +12,7 @@ class UserManager:
         if password != repeat_password:
             return False,"Passwords do not match"
         
-        if not email.endswith("@schueco.in"): 
+        if not email.endswith(("@schueco.in","@schueco.com")): 
             return False,"Email must be a company email."
 
         if role.lower() not in ["user","admin"]:

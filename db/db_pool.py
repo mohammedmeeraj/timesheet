@@ -54,16 +54,31 @@ class DatabasePool:
             "database": "timesheet"
         }
 
-        pool_size = 32 if pool_type == "read" else 29  # More connections for reads
+        pool_size = 20 if pool_type == "read" else 25  # More connections for reads
         pool_name = "read_pool" if pool_type == "read" else "write_pool"
 
         self.db_pool = pooling.MySQLConnectionPool(pool_name=pool_name, pool_size=pool_size,pool_reset_session=True, **db_config)
+    # @contextmanager
+    # def get_db_connection(self):
+    #     # return self.db_pool.get_connection()
+    #     conn=self.db_pool.get_connection()
+    #     try:
+    #         yield conn
+    #     finally:
+    #         conn.close()
+    
     @contextmanager
     def get_db_connection(self):
-        # return self.db_pool.get_connection()
-        conn=self.db_pool.get_connection()
+        if self.db_pool is None:
+            raise ConnectionError("Database pool is not initialized")
+
+        conn = None
         try:
+            conn = self.db_pool.get_connection()
             yield conn
+        except mysql.connector.Error as err:
+            print("Error getting database connection:", err)
         finally:
-            conn.close()
+            if conn:
+                conn.close()
 

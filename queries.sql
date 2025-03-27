@@ -4,6 +4,9 @@ show processlist;
 --This command shows the maximum connections allowed by the MySQL server.
 show variables like 'max_connections';
 
+SELECT CONCAT('KILL ', id, ';') FROM information_schema.processlist WHERE command = 'Sleep';
+
+kill 11414;
 --This command shows the current number of connections to the MySQL server.
 show status like 'Threads_connected';
 
@@ -30,3 +33,5 @@ SHOW GLOBAL variables like 'wait_timeout';
 
 --This command sets the max connections
 set GLOBAL max_connections = 1000;
+
+

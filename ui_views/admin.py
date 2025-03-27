@@ -40,6 +40,8 @@ class MyAdmin(QMainWindow,Ui_MainWindow):
         self.project_btn_2.clicked.connect(self.switch_to_projectPage)
         self.project_btn_1.setChecked(True)
         self.project_btn_2.setChecked(True)
+        self.regularisation_btn_1.clicked.connect(self.switch_to_regularisation_page)
+        self.regularisation_btn_2.clicked.connect(self.switch_to_regularisation_page)
         self.label_3.setText(username)
         self.reset_user_password_btn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         # self.extract_btn.clicked.connect(self.extract_to_excel)
@@ -77,7 +79,6 @@ class MyAdmin(QMainWindow,Ui_MainWindow):
         self.search_line_edit.textChanged.connect(self.filter_table_by_widget)
         self.threads=[]
 
-
         self.add_subtask_btn.clicked.connect(self.add_subtask_form)
         self.assign_project_btn.clicked.connect(self.user_assignment_form)
         self.project_delete_btn.clicked.connect(self.delete_selected_project_row)
@@ -86,11 +87,14 @@ class MyAdmin(QMainWindow,Ui_MainWindow):
         self.create_user_btn.clicked.connect(self.open_create_user_form)
         self.reset_user_password_btn.clicked.connect(self.open_reset_password_dialog)
         self.logged_in_btn.clicked.connect(self.show_logged_in_users)
+        self.stackedWidget.setCurrentIndex(0)
 
         self.fetch_data()
         self.fetch_subtask_data()
         self.fetch_assigned_projects()
+        self.load_open_requests()
         self.timesheet_table.itemDoubleClicked.connect(self.show_timesheet)
+        self.accept_btn.clicked.connect(self.accept_regularisation_request)
 
     # def resource_path(relative_path):
     #     if hasattr(sys,'_MEIPASS'):
@@ -115,10 +119,91 @@ class MyAdmin(QMainWindow,Ui_MainWindow):
         worker.finished.connect(lambda:self.threads.remove(worker))
         worker.start()
 
+
+    def load_open_requests(self):
+        db_instance=DatabasePool(pool_type="read")
+        
+        with db_instance.get_db_connection() as conn:
+            cursor=conn.cursor()
+            try:
+                query="select employee_name,date,reason from regularisation"
+                cursor.execute(query)
+                result=cursor.fetchall()
+                if not result:
+                    return
+                self.regularisation_table.setRowCount(len(result))
+                for row_idx,row_data in enumerate(result):
+                    for col_idx,cell_data in enumerate(row_data):
+                        item=QTableWidgetItem(str(cell_data) if cell_data else "-")
+                        item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                        item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEditable)
+                        self.regularisation_table.setItem(row_idx,col_idx,item)
+                self.regularisation_table.resizeColumnsToContents()
+                self.regularisation_table.horizontalHeader().setStretchLastSection(True)
+                
+            except mysql.connector.Error as err:
+                
+                print(err)
+    def accept_regularisation_request(self):
+        selected_row=self.regularisation_table.currentRow()
+        if selected_row == -1:
+            QMessageBox.warning(self,"No Selection","Please select a request from the table.")
+            return
+        
+        employee_name=self.regularisation_table.item(selected_row,0).text()
+        regularisation_date=self.regularisation_table.item(selected_row,1).text()
+
+        reply=QMessageBox.question(self,"Confirm Regularisation",f"Do you want to accept the regularisation for {employee_name} on {regularisation_date}?",QMessageBox.StandardButton.Yes|QMessageBox.StandardButton.No)
+        if reply==QMessageBox.StandardButton.Yes:
+            db_instance=DatabasePool(pool_type="write")
+            with db_instance.get_db_connection() as conn:
+                cursor=conn.cursor()
+                try:
+                    #Fetch login time from user_logs
+                    cursor.execute("""select login_time from user_logs where employee_name = %s and login_date = %s   """,(employee_name,regularisation_date))
+                    result=cursor.fetchone()
+                    if not result:
+                        QMessageBox.critical(self,"Error","Login time not found.")
+                        return
+                    login_time=result[0]
+
+                    #Convert login time and calculate hours worked
+                    login_time_dt=datetime.strptime(str(login_time),"%H:%M:%S")
+                    logout_time_dt=datetime.strptime("18:00:00","%H:%M:%S")
+
+                    #Compute hours worked
+                    if login_time_dt>logout_time_dt:
+                        total_hours=8
+                    else:
+                        worked_time=logout_time_dt - login_time_dt
+                        total_hours=worked_time.total_seconds()/3600 #convert to hours
+                    #Update user_logs table
+                    update_query="""
+update user_logs set state='closed',regularised='yes', logout_time='18:00:00',hours_logged=%s where employee_name=%s and login_date=%s
+
+"""
+                    cursor.execute(update_query,(total_hours,employee_name,regularisation_date))
+                    #Delete from regularisation table
+                    delete_query="""
+Delete from regularisation where employee_name =%s and date=%s
+
+
+
+"""
+                    cursor.execute(delete_query,(employee_name,regularisation_date))
+                    conn.commit()
+                    QMessageBox.information(self,"Success","Regularisation request accepted successfully!")
+                    self.regularisation_table.removeRow(selected_row)
+                except mysql.connector.Error as err:
+                    conn.rollback()
+                    QMessageBox.critical(self,"Error","Failed to accept regularisation request.")
+                    print("Database error: ",err)
+
+
+
     def show_logged_in_users(self):
         self.logged_in_users=LoggedInUsers()
         self.logged_in_users.exec()
-
 
     def handle_reset_password_data(self,result):
         if not result:
@@ -129,8 +214,8 @@ class MyAdmin(QMainWindow,Ui_MainWindow):
         usernames=[row[0] for row in result]
         dialog=Reset_User_Password(usernames)
         dialog.form_data_submitted.connect(self.save_new_password)
-    
         dialog.exec()
+
     def save_new_password(self,obj,employee,newpass,confirmpass):
         if employee.lower()=="--select user--":
             QMessageBox.warning(self,"No Selection","Please select a user to reset password!")
@@ -278,6 +363,8 @@ class MyAdmin(QMainWindow,Ui_MainWindow):
             self.filter_table(self.assignment_table)
         elif idx==2:
             self.filter_table(self.timesheet_table)
+        elif idx==3:
+            self.filter_table(self.regularisation_table)
         else:
             pass
 
@@ -966,6 +1053,8 @@ class MyAdmin(QMainWindow,Ui_MainWindow):
         self.stackedWidget.setCurrentIndex(1)
     def switch_to_timesheetPage(self):
         self.stackedWidget.setCurrentIndex(2)
+    def switch_to_regularisation_page(self):
+        self.stackedWidget.setCurrentIndex(3)
     def open_project_form(self):
         self.dialog=NewProject()
         self.dialog.form_data_submitted.connect(self.add_project)

@@ -122,7 +122,7 @@ select username from users
         with db_instance.get_db_connection() as conn:
             try:
                 cursor=conn.cursor()
-                if self.ui.employee_combo.currentText=="All Employees":
+                if self.ui.employee_combo.currentText()=="All Employees":
                     query="""
 select employee_name,login_time,logout_time,username,login_date,day_name,hours_logged from user_logs where login_date between %s and %s order by login_date asc
 

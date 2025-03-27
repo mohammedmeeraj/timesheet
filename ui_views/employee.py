@@ -4,7 +4,7 @@ import sys,subprocess,os,socket,platform,uuid
 from db.db import GetCursor
 from datetime import datetime, timedelta
 from openpyxl import Workbook,load_workbook
-from PyQt6.QtCore import QEventLoop,QSizeF,QSettings,Qt
+from PyQt6.QtCore import QEventLoop,QSizeF,QSettings,Qt,QDate
 from openpyxl.styles import Font
 from openpyxl.styles import PatternFill
 from openpyxl.styles import Alignment
@@ -15,7 +15,7 @@ import pandas as pd
 import datetime as dt
 from db.db_pool import DatabasePool
 from .logged_in_users_employee import LoggedInUsersEmployee
-
+from PyQt6.QtGui import QTextCharFormat,QColor
 from sqlalchemy.sql import text
 from PyQt6 import QtGui
 from fpdf import FPDF
@@ -190,43 +190,50 @@ class MyEmployee(QMainWindow,Ui_MainWindow):
         self.update_subtasks()
         self.populate_table_on_state()
         self.get_manager()
-        self.calendarWidget.setFirstDayOfWeek(Qt.DayOfWeek.Monday)
-        self.calendarWidget.setVerticalHeaderFormat(QCalendarWidget.VerticalHeaderFormat.NoVerticalHeader)
+        # self.calendarWidget.setFirstDayOfWeek(Qt.DayOfWeek.Monday)
+        # self.calendarWidget.setVerticalHeaderFormat(QCalendarWidget.VerticalHeaderFormat.NoVerticalHeader)
         self.check_user_log()
+        self.get_absent_dates()
+        self.load_open_requests()
+        self.load_closed_requests()
+        self.btn_regularise.clicked.connect(self.apply_for_regularisation)
 
 
-        self.calendarWidget.setStyleSheet("""
-QCalendarWidget QWidget {
-    background-color: #fff;
-    color: #000;
-    border-radius: 2px;
-    font-size: 14px;
-}            
+#         self.calendarWidget.setStyleSheet("""
+# QCalendarWidget QWidget {
+#     background-color: #fff;
+#     color: #000;
+#     border-radius: 2px;
+#     font-size: 14px;
+# }            
 
-QCalendarWidget QAbstractItemView {
-    background-color: #fff;
-    color: #000;  /* Fixed text color */
-    selection-background-color: #1F95EF;
-}      
+# QCalendarWidget QAbstractItemView {
+    
+#     color: #000;  /* Fixed text color */
+#     selection-background-color: #1F95EF;
+# }      
 
-QCalendarWidget QTableView::item {
-    border: 1px solid #f2f2f2; /* Border around individual cells */
-}
-QCalendarWidget QWidget#qt_calendar_navigationbar {
-        background-color: #eee;
+# QCalendarWidget QTableView::item {
+#     border: 1px solid #f2f2f2; /* Border around individual cells */
+    
+# }
+# QCalendarWidget QWidget#qt_calendar_navigationbar {
+#         background-color: #eee;
         
-    } 
-QCalendarWidget QToolButton {
-                                          background-color: #eee;
-    color: black;
-    border-radius: 5px;
-    padding: 15px;
+#     } 
+# QCalendarWidget QToolButton {
+#                                           background-color: #eee;
+#     color: black;
+#     border-radius: 5px;
+#     padding: 15px;
                                           
                                           
-                                          }     
+#                                           }     
                     
                                           
-                                          """)
+#                                           """)
+        # self.highlight_dates()
+        
         
        
 
@@ -253,7 +260,7 @@ QCalendarWidget QToolButton {
 
 
 
-
+    
 
     def show_regularization_page(self):
         self.stackedWidget.setCurrentIndex(2)
@@ -696,7 +703,7 @@ QCalendarWidget QToolButton {
     def handle_logs(self):
         if self.btn_sign_in_sign_out.text()=="Sign In":
             token=str(uuid.uuid4())
-            expiration_time=dt.datetime.now().replace(microsecond=0)+dt.timedelta(hours=10)
+            expiration_time=dt.datetime.now().replace(microsecond=0)+dt.timedelta(minutes=3)
             
             username=self.label_3.text()
             login_time,ipaddress,wifi_name,login_date,day_name=self.get_login_details()
@@ -716,8 +723,134 @@ QCalendarWidget QToolButton {
                 self.btn_sign_in_sign_out.setText("Sign In")
                 settings=QSettings("Schueco","app")
                 settings.remove("sign_in")
+    @staticmethod
+    def load_dates_for_reg(func):
+        def wrapper(self):
+            dates=func(self)
+            self.dates_combo.clear()
+            for date in dates:
+                qdate=QDate(date.year,date.month,date.day)
+                date_str=qdate.toString("yyyy-MM-dd")
+                self.dates_combo.addItem(date_str)
+        return wrapper
 
-            
+
+    
+
+    @load_dates_for_reg   
+    def get_absent_dates(self):
+        db_instance=DatabasePool(pool_type="read")
+        with db_instance.get_db_connection() as conn:
+            cursor=conn.cursor()
+            try:
+                cursor.execute("select login_date from user_logs where logout_time is null and employee_name=%s and state=%s",(self.label_3.text(),"neutral"))
+                result=cursor.fetchall()
+                absent_dates=[row[0] for row in result]
+                print("The ress is ",result)
+                return absent_dates
+            except mysql.connector.Error as err:
+                print("Error loading")
+
+    def load_open_requests(self):
+        db_instance = DatabasePool(pool_type="read")
+        state="opened"
+        emp_name=self.label_3.text().strip()
+        with db_instance.get_db_connection() as conn:
+            cursor=conn.cursor()
+            try:
+                cursor.execute("select login_date from user_logs where state=%s and employee_name=%s",(state,emp_name))
+                result=cursor.fetchall()
+                opened_requests=[res[0] for res in result]
+                self.open_request_combo.clear()
+
+                for opened_request in opened_requests:
+                    qdate=QDate(opened_request.year,opened_request.month,opened_request.day)
+                    date_str=qdate.toString("yyyy-MM-dd")
+                    self.open_request_combo.addItem(date_str)
+
+            except mysql.connector.Error as err:
+                print("Error loading opened requests ",err)
+
+    def load_closed_requests(self):
+        db_instance = DatabasePool(pool_type="read")
+        state="closed"
+        emp_name=self.label_3.text().strip()
+        with db_instance.get_db_connection() as conn:
+            cursor=conn.cursor()
+            try:
+                cursor.execute("select login_date from user_logs where state=%s and employee_name=%s",(state,emp_name))
+                result=cursor.fetchall()
+                closed_requests=[res[0] for res in result]
+                self.closed_request_combo.clear()
+
+                for closed_request in closed_requests:
+                    qdate=QDate(closed_request.year,closed_request.month,closed_request.day)
+                    date_str=qdate.toString("yyyy-MM-dd")
+                    self.closed_request_combo.addItem(date_str)
+
+            except mysql.connector.Error as err:
+                print("Error loading opened requests ",err)
+        
+    def apply_for_regularisation(self):
+        regularisation_date=self.dates_combo.currentText().strip()
+        reason=self.reason_txt_edit.toPlainText().strip()
+        emp_name=self.label_3.text().strip()
+        if regularisation_date=="":
+            QMessageBox.warning(self,"Invalid","You don't have anything to regularise!")
+            return
+        if reason=="":
+            reason=None
+        db_instance=DatabasePool(pool_type="write")
+        with db_instance.get_db_connection() as conn:
+            cursor=conn.cursor()
+            try:
+                query="insert into regularisation (employee_name,date,reason) values(%s,%s,%s)"
+                cursor.execute(query,(emp_name,regularisation_date,reason))
+                query="update user_logs set state=%s where employee_name=%s and login_date=%s"
+                cursor.execute(query,("opened",emp_name,regularisation_date))
+                conn.commit()
+                QMessageBox.information(self,"Success","You have successfully applied for regularisation. 😉")
+                index=self.dates_combo.findText(regularisation_date)
+                if index!=-1:
+                    self.dates_combo.removeItem(index)
+                self.load_open_requests()
+
+            except mysql.connector.Error as err:
+                conn.rollback()
+                QMessageBox.critical(self,"Failed","Failed to apply for regularisation")
+                print(err)
+        
+
+
+    # def highlight_absent_dates(self):
+    #     # self.calendarWidget.setStyleSheet("")
+    #     absent_dates=self.get_absent_dates()
+    #     print("The absent dates are ",absent_dates)
+    #     format_absent=QTextCharFormat()
+    #     format_absent.setBackground(QColor("#FF0000"))
+    #     for date in absent_dates:
+    #         qdate=QDate(date.year,date.month,date.day)
+    #         # format_absent.setToolTip("User Absent")
+    #         self.calendarWidget.setDateTextFormat(qdate,format_absent)
+    #     self.calendarWidget.updateCells()
+
+    # def highlight_weekends(self):
+    #     format_weekend = QTextCharFormat()
+    #     format_weekend.setForeground(QColor("#00008B"))  # Orange-Red for weekends
+
+    #     today = QDate.currentDate()  # Get the current date
+    #     year = today.year()
+    #     month = today.month()
+
+    #     # Loop through all days in the month
+    #     for day in range(1, today.daysInMonth() + 1):
+    #         qdate = QDate(year, month, day)
+
+    #         # Check if it's Saturday (6) or Sunday (7)
+    #         if qdate.dayOfWeek() in [6, 7]:
+    #             self.calendarWidget.setDateTextFormat(qdate, format_weekend)
+
+    #     self.calendarWidget.update()
 
 
     def capture_log_out_time(self):
@@ -729,25 +862,26 @@ QCalendarWidget QToolButton {
         with db_instance.get_db_connection() as conn:
             cursor=conn.cursor()
             try:
-                query="update users set login_token=NULL, token_expiry=NULL where username=%s"
-                cursor.execute(query,(self.label_3.text(),))
-                print(f"The user is -{self.label_3.text()}-")
+                # query="update users set login_token=NULL, token_expiry=NULL where username=%s"
+                # cursor.execute(query,(self.label_3.text(),))
+                # print(f"The user is -{self.label_3.text()}-")
 
-                query="select login_time from user_logs where employee_name=%s order by login_time desc limit 1"
+                query="select login_time from user_logs where employee_name=%s order by login_time asc limit 1"
                 cursor.execute(query,(self.label_3.text(),))
                 login_hour=cursor.fetchone()[0]
                 print("the login hour is ",login_hour)
                 total_logged_hours=dt.datetime.strptime(logout_time,"%H:%M:%S")-login_hour
                 query="update user_logs set logout_time=%s,hours_logged=%s where employee_name=%s and login_time=%s"
                 cursor.execute(query,(logout_time,total_logged_hours,self.label_3.text(),login_hour))
+                print("Succesfully written to db")
 
                 conn.commit()
             except mysql.connector.Error as err:
                 conn.rollback()
                 QMessageBox.critical(self,"Database Error",f"An error occurred: {err}")
         
-        settings=QSettings("Schueco","app")
-        settings.remove("login_token")
+        # settings=QSettings("Schueco","app")
+        # settings.remove("login_token")
     def push_logs_to_db(self,login_time,wifi_name,login_date,day_name,system_user,username,token,expiration_time):
         db_instance=DatabasePool(pool_type="write")
         with db_instance.get_db_connection() as conn:

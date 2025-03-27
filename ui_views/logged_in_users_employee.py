@@ -20,7 +20,7 @@ class LoggedInUsersEmployee(QDialog):
         with db_instance.get_db_connection() as conn:
             cursor=conn.cursor()
             try:
-                query="Select employee_name, login_time, logout_time, username, login_date, day_name, hours_logged FROM user_logs where employee_name=%s"
+                query="Select employee_name, login_time, logout_time, username, login_date, day_name, hours_logged,regularised FROM user_logs where employee_name=%s"
                 cursor.execute(query,(self.employee_name,))
                 # cursor.execute(query)
                 records=cursor.fetchall()
